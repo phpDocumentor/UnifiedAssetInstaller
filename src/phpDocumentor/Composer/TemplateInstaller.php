@@ -22,10 +22,13 @@ class TemplateInstaller extends \Composer\Installer\LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        var_dump($package->getPrettyName());
-        var_dump(ltrim($package->getPrettyName(), 'phpdocumentor/template.'));
-        return 'data/templates/'
-            .ltrim($package->getPrettyName(), 'phpdocumentor/template.');
+        if (substr($package->getPrettyName(), 0, 23) != 'phpdocumentor/template.') {
+            throw new \InvalidArgumentException(
+                'Unable to install template, phpdocumentor templates should always start their package name with "phpdocumentor/template."'
+            );
+        }
+        var_dump(substr($package->getPrettyName(), 23));
+        return 'data/templates/'.substr($package->getPrettyName(), 23));
     }
 
     /**
