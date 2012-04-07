@@ -22,6 +22,8 @@ class TemplateInstaller extends \Composer\Installer\LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
+        var_dump($package->getPrettyName());
+        var_dump(ltrim($package->getPrettyName(), 'phpdocumentor/template.'));
         return 'data/templates/'
             .ltrim($package->getPrettyName(), 'phpdocumentor/template.');
     }
