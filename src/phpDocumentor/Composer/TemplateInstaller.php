@@ -3,7 +3,7 @@
 namespace phpDocumentor\Composer;
 
 use Composer\Package\PackageInterface;
-use Composer\IO\IOInterface;
+use Composer\IO\NullIO;
 
 class TemplateInstaller extends \Composer\Installer\LibraryInstaller
 {
