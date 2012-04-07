@@ -1,0 +1,9 @@
+{
+  "name": "phpdocumentor/template-installer",
+  "type": "composer-installer",
+  "license": "MIT",
+  "autoload": {
+    "psr-0": {"phpDocumentor\\Composer": "src/"}
+  },
+  "extra": {"class": "\\phpDocumentor\\Composer\\TemplateInstaller"}
+}
