@@ -3,9 +3,18 @@
 namespace phpDocumentor\Composer;
 
 use Composer\Package\PackageInterface;
+use Composer\IO\IOInterface;
 
 class TemplateInstaller extends \Composer\Installer\LibraryInstaller
 {
+    /**
+     * Override constructor to pass 5th parameter
+     */
+    public function __construct($vendorDir, $binDir, DownloadManager $dm, WritableRepositoryInterface $repository)
+    {
+      parent::__construct($vendorDir, $binDir, $dm, $repository, new NullIO());
+    }
+
     /**
      * {@inheritDoc}
      */
