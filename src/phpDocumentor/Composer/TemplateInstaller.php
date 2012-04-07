@@ -4,6 +4,8 @@ namespace phpDocumentor\Composer;
 
 use Composer\Package\PackageInterface;
 use Composer\IO\NullIO;
+use Composer\Downloader\DownloadManager;
+use Composer\Repository\WritableRepositoryInterface;
 
 class TemplateInstaller extends \Composer\Installer\LibraryInstaller
 {
