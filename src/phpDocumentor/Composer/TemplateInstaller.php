@@ -28,7 +28,7 @@ class TemplateInstaller extends \Composer\Installer\LibraryInstaller
             );
         }
         var_dump(substr($package->getPrettyName(), 23));
-        return 'data/templates/'.substr($package->getPrettyName(), 23));
+        return 'data/templates/'.substr($package->getPrettyName(), 23);
     }
 
     /**
