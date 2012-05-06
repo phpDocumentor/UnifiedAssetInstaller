@@ -4,7 +4,7 @@ namespace phpDocumentor\Composer;
 
 use Composer\Package\PackageInterface;
 
-class TemplateInstaller extends \Composer\Installer\LibraryInstaller
+class UnifiedAssetInstaller extends \Composer\Installer\LibraryInstaller
 {
     /**
      * {@inheritDoc}

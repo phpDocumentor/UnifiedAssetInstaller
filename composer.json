@@ -1,9 +1,11 @@
 {
-  "name": "phpdocumentor/template-installer",
+  "name": "phpdocumentor/unified-asset-installer",
   "type": "composer-installer",
   "license": "MIT",
   "autoload": {
     "psr-0": {"phpDocumentor\\Composer": "src/"}
   },
-  "extra": {"class": "\\phpDocumentor\\Composer\\TemplateInstaller"}
+  "extra": {
+      "class": "\\phpDocumentor\\Composer\\UnifiedAssetInstaller"
+  }
 }
