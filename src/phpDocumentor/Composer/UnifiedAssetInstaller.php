@@ -13,9 +13,11 @@ class UnifiedAssetInstaller extends \Composer\Installer\LibraryInstaller
     {
         if (substr($package->getPrettyName(), 0, 23) != 'phpdocumentor/template-') {
             throw new \InvalidArgumentException(
-                'Unable to install template, phpdocumentor templates should always start their package name with "phpdocumentor/template."'
+                'Unable to install template, phpdocumentor templates should '
+                .'always start their package name with "phpdocumentor/template-"'
             );
         }
+
         return 'data/templates/'.substr($package->getPrettyName(), 23);
     }
 
