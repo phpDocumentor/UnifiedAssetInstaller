@@ -13,10 +13,27 @@ class UnifiedAssetInstaller extends \Composer\Installer\LibraryInstaller
     {
         if (substr($package->getPrettyName(), 0, 23) != 'phpdocumentor/template-') {
             throw new \InvalidArgumentException(
-                'Unable to install template, phpdocumentor templates should always start their package name with "phpdocumentor/template."'
+                'Unable to install template, phpdocumentor templates should '
+                .'always start their package name with "phpdocumentor/template-"'
             );
         }
-        return 'data/templates/'.substr($package->getPrettyName(), 23);
+
+        if ($this->getVendorInstallPath()) {
+            return $this->getVendorInstallPath() . '/' . substr($package->getPrettyName(), 23);
+        } else {
+            return 'data/templates/'.substr($package->getPrettyName(), 23);
+        }
+    }
+
+    /**
+     * Check and return the install path when installed as vendor
+     * @return string
+     */
+    protected function getVendorInstallPath()
+    {
+        if (file_exists($this->vendorDir . '/phpdocumentor/phpdocumentor/composer.json')) {
+            return $this->vendorDir . '/phpdocumentor/phpdocumentor/data/templates';
+        }
     }
 
     /**
