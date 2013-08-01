@@ -8,6 +8,7 @@ use Composer\Util\Filesystem;
 use Composer\Test\TestCase;
 use Composer\Composer;
 use Composer\Config;
+use Composer\Package\RootPackage;
 
 /**
  * @covers phpDocumentor\Composer\UnifiedAssetInstaller
@@ -22,6 +23,7 @@ class UnifiedAssetInstallerTest extends TestCase
     protected $repository;
     protected $io;
     protected $fs;
+    protected $package;
 
     protected function setUp()
     {
@@ -30,6 +32,9 @@ class UnifiedAssetInstallerTest extends TestCase
         $this->composer = new Composer();
         $this->config = new Config();
         $this->composer->setConfig($this->config);
+
+        $this->package = new RootPackage('phpdocumentor/phpdocumentor', '2.0.0', '2.0.0');
+        $this->composer->setPackage($this->package);
 
         $this->vendorDir = realpath(sys_get_temp_dir()).DIRECTORY_SEPARATOR
             .'composer-test-vendor';
@@ -89,6 +94,31 @@ class UnifiedAssetInstallerTest extends TestCase
         );
     }
 
+
+    /**
+     * @covers phpDocumentor\Composer\UnifiedAssetInstaller::getInstallPath
+     */
+    public function testGetInstallPathWhenVendored()
+    {
+        $composer = $this->createComposerMock();
+        $rootPackage = new RootPackage('not/phpdocumentor-base-install', '1.0.0.0', '1.0.0');
+        $composer->setPackage($rootPackage);
+
+        $library = new UnifiedAssetInstaller($this->io, $composer);
+
+        $package = $this->createPackageMock();
+
+        $package
+            ->expects($this->atLeastOnce())
+            ->method('getPrettyName')
+            ->will($this->returnValue('phpdocumentor/template-mock'));
+
+        $this->assertEquals(
+            $this->vendorDir.'/phpdocumentor/phpdocumentor/data/templates/mock',
+            $library->getInstallPath($package)
+        );
+    }
+
     /**
      * @covers phpDocumentor\Composer\UnifiedAssetInstaller::getInstallPath
      * @expectedException InvalidArgumentException
@@ -123,5 +153,14 @@ class UnifiedAssetInstallerTest extends TestCase
         return $this->getMockBuilder('Composer\Package\Package')
             ->setConstructorArgs(array(md5(rand()), '1.0.0.0', '1.0.0'))
             ->getMock();
+    }
+
+    protected function createComposerMock()
+    {
+        $composer = new Composer();
+        $composer->setConfig($this->config);
+        $composer->setDownloadManager($this->dm);
+
+        return $composer;
     }
 }
