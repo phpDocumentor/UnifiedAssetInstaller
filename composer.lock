@@ -14,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "26ef9d3e4705c69ef9b286baeaec37806e09d00f"
+                "reference": "1f2d331fd341897c9d54414a76b909beba9e3a59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/26ef9d3e4705c69ef9b286baeaec37806e09d00f",
-                "reference": "26ef9d3e4705c69ef9b286baeaec37806e09d00f",
+                "url": "https://api.github.com/repos/composer/composer/zipball/1f2d331fd341897c9d54414a76b909beba9e3a59",
+                "reference": "1f2d331fd341897c9d54414a76b909beba9e3a59",
                 "shasum": ""
             },
             "require": {
@@ -75,7 +75,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2013-08-01 14:54:02"
+            "time": "2013-08-01 15:54:02"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -87,7 +87,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/justinrainbow/json-schema/zipball/v1.1.0",
+                "url": "https://github.com/justinrainbow/json-schema/archive/v1.1.0.zip",
                 "reference": "v1.1.0",
                 "shasum": ""
             },
@@ -100,6 +100,7 @@
                     "JsonSchema": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "NewBSD"
             ],
