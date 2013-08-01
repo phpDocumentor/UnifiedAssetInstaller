@@ -11,9 +11,10 @@
 
 namespace phpDocumentor\Composer;
 
+use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
 
-class UnifiedAssetInstaller extends \Composer\Installer\LibraryInstaller
+class UnifiedAssetInstaller extends LibraryInstaller
 {
     /**
      * Determines the install path for templates,
@@ -75,9 +76,10 @@ class UnifiedAssetInstaller extends \Composer\Installer\LibraryInstaller
      */
     protected function getTemplateRootPath()
     {
-        return (file_exists($this->vendorDir . '/phpdocumentor/phpdocumentor/composer.json'))
-            ? $this->vendorDir . '/phpdocumentor/phpdocumentor/data/templates'
-            : 'data/templates';
+        return ($this->composer->getPackage()->getName() === 'phpdocumentor/phpdocumentor')
+            ? 'data/templates'
+            : $this->vendorDir . '/phpdocumentor/phpdocumentor/data/templates'
+        ;
     }
 
     /**
