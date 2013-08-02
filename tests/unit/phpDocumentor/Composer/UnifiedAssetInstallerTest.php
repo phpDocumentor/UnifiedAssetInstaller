@@ -114,7 +114,7 @@ class UnifiedAssetInstallerTest extends TestCase
             ->will($this->returnValue('phpdocumentor/template-mock'));
 
         $this->assertEquals(
-            $this->vendorDir.'/phpdocumentor/phpdocumentor/data/templates/mock',
+            $this->vendorDir.'/phpdocumentor/templates/mock',
             $library->getInstallPath($package)
         );
     }
