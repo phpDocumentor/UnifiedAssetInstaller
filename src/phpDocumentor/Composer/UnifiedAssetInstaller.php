@@ -78,7 +78,7 @@ class UnifiedAssetInstaller extends LibraryInstaller
     {
         return ($this->composer->getPackage()->getName() === 'phpdocumentor/phpdocumentor')
             ? 'data/templates'
-            : $this->vendorDir . '/phpdocumentor/phpdocumentor/data/templates'
+            : $this->vendorDir . '/phpdocumentor/templates'
         ;
     }
 
